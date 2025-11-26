@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: maven-jar-app
+  labels:
+    app: maven-jar
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: maven-jar
+  template:
+    metadata:
+      labels:
+        app: maven-jar
+    spec:
+      containers:
+      - name: maven-jar-container
+        image: gaganahs/mavenjarapp:latest   # <-- replace with your image name
+        ports:
+        - containerPort: 8080
